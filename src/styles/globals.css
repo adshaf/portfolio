@@ -24,3 +24,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+section {
+  max-width: 100%;
+  height: fit-content;
+  background-color: darkcyan;
+}
+
+#home {
+  color: lime;
+  font-size: large;
+  font-weight: bold;
+  align-items: center;
+  justify-items: center;
+}
+
