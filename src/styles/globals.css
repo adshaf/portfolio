@@ -33,10 +33,18 @@ section {
   padding-right: 3rem;
 }
 
-img {
+#heroImg {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
+
+#projectImg {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+
+
 
 #home {
   color: lime;
