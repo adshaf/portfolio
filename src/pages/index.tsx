@@ -1,25 +1,107 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+import Image from "next/image";
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const inter = Inter({subsets: ['latin']});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: "500"
+});
+
+
+interface Project {
+  title: string;
+  desc: string;
+  img?: string;
+  link?: string;
+}
+
+const projects: Project[] = [
+  { title: "Project 1", desc: "React portfolio site", img: "/p1.jpg", link: "https://example.com" },
+  { title: "Project 1", desc: "React portfolio site", img: "/p1.jpg", link: "https://example.com" },
+  { title: "Project 1", desc: "React portfolio site", img: "/p1.jpg", link: "https://example.com" },
+  { title: "Project 1", desc: "React portfolio site", img: "/p1.jpg", link: "https://example.com" },
+  { title: "Project 1", desc: "React portfolio site", img: "/p1.jpg", link: "https://example.com" },
+  { title: "Project 1", desc: "React portfolio site", img: "/p1.jpg", link: "https://example.com" },
+  { title: "Project 1", desc: "React portfolio site", img: "/p1.jpg", link: "https://example.com" },
+  
+];
 
 export default function Home() {
+
   return (
     <div>
-
-      <section id="about">
-        ABOUT ME
+      <section id="hero" className="min-h-screen flex flex-col md:flex-row">
+        {/* Text Column */}
+        <div className="flex flex-col justify-center item-start w-full md:w-1/2 p-8 bg-black/20">
+          <div className={`text-[26pt] font-bold py-3 ${poppins.className}`}>
+                Hello, I am Ahmad Adam Shafariansyah (or Shaf for short)
+              </div>
+              <div className={`pb-5 ${inter.className}`}>
+                Welcome to my portfolio website! I hope to showcase my experiences & technical skillsets through this web app, so please have a read through & contact me should you find anything intriguing.
+              </div>
+              <div>
+                [Insert additional info/self introduction]
+              </div>
+              <div className="flex gap-6 px-6 py-[3rem]">
+                <button id="heroButton">Download Resume</button>
+                <button id="heroButton">View Project Snapshots</button>
+                <button id="heroButton">Contact Me</button>
+              </div>
+        </div>
+        {/* Image Column */}
+        <div className="flex flex-col justify-center items-center w-full md:w-1/2 p-8">
+          <img src="/placeholderProfile.jpg" alt="placeholder image" width="500px"/>
+        </div>
       </section>
 
-      <section id="projects">
-        PROJECTS
+
+      <section id="projects" className="min-h-screen py-[10rem] px-6 bg-gray-50">
+        <div>
+          <div className={`${poppins.className} text-[26pt] mb-12 text-center`}>Project List</div>
+          {/* Grid for project cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
+                  {/* Image */}
+                  <div className="relative h-48 w-full">
+                    {project.img ? (
+                      <Image 
+                        src={project.img} 
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <span className="text-gray-500">Image/Preview</span>
+                    )}
+                  </div>
+                {/* Content */}
+                <div className="p-6 flex flex-col justify-between h-full">
+                  <div>
+                    <h3 className="texxt-xl font-semibold mb-2">{project.title}</h3>
+                    <p className="text-gray-600 mb04">{project.desc}</p>
+                  </div>
+
+                  {project.link && (
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                      >
+                      View Project
+                    </a>
+                  )};
+
+                </div>
+              </div>
+            ))};
+          </div>
+        </div>
       </section>
 
       <section id="other">
@@ -29,7 +111,6 @@ export default function Home() {
       <section id="contact">
         CONTACT ME
       </section>
-
     </div>
     );
   };
