@@ -43,17 +43,6 @@ section {
   border-top-right-radius: 10px;
 }
 
-
-
-
-#home {
-  color: lime;
-  font-size: large;
-  font-weight: bold;
-  align-items: center;
-  justify-items: center;
-}
-
 #heroButton {
   border: #0a0a0a 1px solid;
   border-radius: 5px;
