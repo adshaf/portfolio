@@ -2,12 +2,21 @@
 import { useState } from "react";
 import ProjectModal from "./projectModal";
 import Image from "next/image";
+import { Inter, Poppins } from "next/font/google";
+
+const inter = Inter({subsets: ['latin']});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: "500"
+});
+
 
 interface Project {
   title: string;
   tech: string,
   summary: string;
-  desc?: string;
+  desc?: string | string[];
   img?: string;
   link?: string;
 };
@@ -45,8 +54,9 @@ export default function ProjectsGridClient({ projects }: ProjectsGridClientProps
 
           {/* Content */}
           <div className="p-6">
-            <h3 className="text-xl font-bold">{project.title}</h3>
-            <p className="text-gray-600">{project.summary}</p>
+            <h3 className={`text-xl text-blue-700 font-semibold mb-2 ${poppins.className}`}>{project.title}</h3>
+            <h1 className={`text-md text-blue-500 mb-2 ${inter.className}`}>{project.tech}</h1>
+            <p className={`text-black mb-4 min-h-[100px] text-justify ${inter.className}`}>{project.summary}</p>
           </div>
         </div>
       ))}
